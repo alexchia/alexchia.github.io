@@ -1733,7 +1733,7 @@ ul.sf-menu > li, .sf-menu > li > a {
 /*------------------------------------------------------------------
 [8. Page Content]
 */
-#portfolio{
+#projects{
   background: url("../images/backgrounds/dark_wood.png"); }
 
 #progress {
@@ -3581,4 +3581,8 @@ a.gm-toggle-link {
 
 .intro-para {
   padding-bottom: 30px;
+}
+
+p a {
+  border-bottom: 1px white dashed;
 }
