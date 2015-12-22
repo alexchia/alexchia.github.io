@@ -283,36 +283,6 @@ jQuery(document).ready(function () {
 
 
 
-    /* Circle Progress */
-    function animateElements() {
-        $('.progressbar').each(function () {
-            var elementPos = $(this).offset().top;
-            var topOfWindow = $(window).scrollTop();
-            var percent = $(this).find('.circle').attr('data-percent');
-            var percentage = parseInt(percent, 10) / parseInt(100, 10);
-            var animate = $(this).data('animate');
-            if (elementPos < topOfWindow + $(window).height() - 30 && !animate) {
-                $(this).data('animate', true);
-                $(this).find('.circle').circleProgress({
-                    startAngle: -Math.PI / 2,
-                    value: percent / 100,
-                    thickness: 8,
-                    fill: {
-                        color: '#E84855'
-                    }
-                }).on('circle-animation-progress', function (event, progress, stepValue) {
-                    $(this).find('div').text((stepValue*100).toFixed(1) + "%");
-                }).stop();
-            }
-        });
-    }
-
-    // Show animated elements
-    animateElements();
-    $(window).scroll(animateElements);
-
-
-
     /* Animated Counter */
 
     jQuery('.count-container span').counterUp({
@@ -347,87 +317,5 @@ jQuery(document).ready(function () {
     ga('send', 'pageview');
 
 
-
-    /* Google map Toggle */
-
-    var gmapIsReady = false;
-
-    jQuery('.gm-toggle-link').click(function() {
-        if (!gmapIsReady) {
-            initGmap();
-        }
-        jQuery('#gm-panel').slideToggle('slow');
-    });
-
-
-    /* Google map */
-
-    function initGmap() {
-        gmapIsReady = true;
-
-        // Create an array of styles.
-        var styles = [
-            {
-                stylers: [
-                    {saturation: -100}
-                ]
-            }, {
-                featureType: "road",
-                elementType: "geometry",
-                stylers: [
-                    {lightness: 100},
-                    {visibility: "simplified"}
-                ]
-            }, {
-                featureType: "road",
-                elementType: "labels",
-                stylers: [
-                    {visibility: "off"}
-                ]
-            }
-        ];
-
-        // Create a new StyledMapType object, passing it the array of styles,
-        // as well as the name to be displayed on the map type control.
-        var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
-
-        // Create a map object, and include the MapTypeId to add
-        // to the map type control.
-        var $latlng = new google.maps.LatLng(52.5075419, 13.4261419),
-            $mapOptions = {
-                zoom: 13,
-                center: $latlng,
-                panControl: false,
-                zoomControl: true,
-                scaleControl: false,
-                mapTypeControl: false,
-                scrollwheel: false,
-                mapTypeControlOptions: {
-                    mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-                }
-            };
-        var map = new google.maps.Map(document.getElementById('google-map'), $mapOptions);
-
-        google.maps.event.trigger(map, 'resize');
-
-        //Associate the styled map with the MapTypeId and set it to display.
-        map.mapTypes.set('map_style', styledMap);
-        map.setMapTypeId('map_style');
-
-        var marker = new google.maps.Marker({
-            position: $latlng,
-            map: map,
-            title: ""
-        });
-
-    }
-
 });
-
-
-
-
-
-
-
 
