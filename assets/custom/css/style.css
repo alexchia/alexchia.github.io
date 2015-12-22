@@ -22,12 +22,14 @@ Media Query
 
 
 -------------------------------------------------------------------*/
+
 /*------------------------------------------------------------------
 [Color Scheme / Colors, textures]
 */
 /* White Skin */
 /* Contrast */
 /* Blue-grey */
+
 .fontcolor-regular, .fontcolor-regular a {
   color: #333; }
 
@@ -3575,4 +3577,8 @@ a.gm-toggle-link {
   .sticky-wrapper {
     height: 80px; } }
 
-/*# sourceMappingURL=style.css.map */
+/* additions */
+
+.intro-para {
+  padding-bottom: 30px;
+}
