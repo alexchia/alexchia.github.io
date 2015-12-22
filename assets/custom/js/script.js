@@ -66,9 +66,6 @@ jQuery(document).ready(function () {
 
     jQuery(window).load(function () {
 
-        /* Preloader */
-        $('#preloader').fadeOut('slow',function(){$(this).remove();});
-
 
         /* Sticky Header */
         jQuery(".sticky-header").sticky({topSpacing: 0});
@@ -85,7 +82,7 @@ jQuery(document).ready(function () {
 
         var bodyEl = document.body,
             content = document.querySelector( '.content-wrap' );
-        
+
         function init() {
             initEvents();
         }
